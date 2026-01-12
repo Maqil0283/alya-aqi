@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aqil & Alya - Pertunangan</title>
+<title>Alya & Aqil - Pertunangan</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
-
-<!-- AOS -->
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
 <style>
@@ -37,7 +35,7 @@ body {
 
 .door {
   width: 50%; height: 100%;
-  background: url('https://i.ibb.co/F5sqGQ6/wood-door.png') no-repeat center/cover; /* real wooden door image */
+  background: url('https://pngimg.com/uploads/door/door_PNG17600.png') center/cover no-repeat; /* example open door PNG */  [oai_citation:1‡pngimg.com](https://pngimg.com/image/17600?utm_source=chatgpt.com)
   transform-origin: left;
   transition: transform 2s ease;
 }
@@ -64,22 +62,15 @@ section {
 }
 
 .card {
-  background: #ffffffcc; 
+  background: #ffffffcc;
   width: 100%;
   max-width: 380px;
   padding: 50px 30px;
   border-radius: 28px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.08);
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   backdrop-filter: blur(5px);
-  position: relative;
   z-index: 2;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
 }
 
 .names {
@@ -90,10 +81,8 @@ section {
   text-shadow: 2px 2px 6px rgba(0,0,0,0.1);
 }
 
-.subtitle {
-  letter-spacing: 2px;
-  font-size: 14px;
-  color: #b76e31;
+.subtitle, .small {
+  opacity: 0.8;
 }
 
 .divider {
@@ -102,24 +91,6 @@ section {
   background: linear-gradient(to right, #fbb1b1, #c7a46a, #b1fbd6);
   margin: 20px auto;
   border-radius: 2px;
-}
-
-.date {
-  font-size: 22px;
-  letter-spacing: 3px;
-  font-weight: 600;
-  color: #b76e31;
-}
-
-.small {
-  font-size: 14px;
-  opacity: 0.8;
-}
-
-.scroll {
-  margin-top: 25px;
-  font-size: 13px;
-  opacity: 0.6;
 }
 
 button {
@@ -133,71 +104,52 @@ button {
   cursor: pointer;
   transition: background 0.3s ease;
 }
-
-button:hover {
-  background: #b76e31;
-}
+button:hover { background: #b76e31; }
 
 /* FLOATING PETALS */
 .petal {
   position: fixed;
-  width: 25px;
-  height: 25px;
-  background: url('https://i.ibb.co/4pVh3m0/petal.png') no-repeat center/contain;
+  width: 30px;
+  height: 30px;
+  background: url('https://pngimg.com/uploads/flower/flower_PNG109.png') center/contain no-repeat; /* flower PNG */  [oai_citation:2‡Pngtree](https://pngtree.com/freepng/flying-pink-petals-isolated-on-white_20494726.html?utm_source=chatgpt.com)
   pointer-events: none;
   top: -50px;
   opacity: 0.8;
   z-index: 1;
-  animation-name: fall;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation: fall linear infinite;
 }
-
 @keyframes fall {
-  0% {
-    transform: translateY(-50px) rotate(0deg);
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0.5;
-  }
+  0% { transform: translateY(-50px) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(360deg); }
 }
 
 /* FLYING BIRDS */
 .bird {
   position: fixed;
-  width: 40px;
-  height: 40px;
-  background: url('https://i.ibb.co/Brx8kT9/white-bird.png') no-repeat center/contain;
+  width: 50px;
+  height: 50px;
+  background: url('https://www.pngall.com/wp-content/uploads/2016/04/White-Bird-PNG-Image.png') center/contain no-repeat; /* white flying bird */  [oai_citation:3‡PNG All -](https://www.pngall.com/white-bird-png/?utm_source=chatgpt.com)
   pointer-events: none;
   z-index: 1;
-  top: 20%;
   animation: fly linear infinite;
 }
-
 @keyframes fly {
-  0% { transform: translateX(-50px) translateY(0) rotate(0deg);}
-  25% { transform: translateX(25vw) translateY(-20px) rotate(10deg);}
-  50% { transform: translateX(50vw) translateY(10px) rotate(-10deg);}
-  75% { transform: translateX(75vw) translateY(-10px) rotate(5deg);}
-  100% { transform: translateX(110vw) translateY(0) rotate(0deg);}
+  0% { transform: translateX(-50px) translateY(0); }
+  100% { transform: translateX(110vw) translateY(-30px); }
 }
 </style>
 </head>
 
 <body>
 
-<!-- DOOR OVERLAY -->
+<!-- DOOR -->
 <div id="doorOverlay">
   <div class="door left"></div>
   <div class="door right"></div>
 </div>
 
-<!-- FLOATING PETALS -->
+<!-- PETALS + BIRDS -->
 <div id="petals"></div>
-
-<!-- FLYING BIRDS -->
 <div id="birds"></div>
 
 <main id="mainContent">
@@ -208,53 +160,24 @@ button:hover {
     <div class="subtitle">PERTUNANGAN</div>
     <div class="divider"></div>
     <div class="names">Alya & Aqil</div>
-    <div class="scroll">Scroll ↓</div>
+    <div class="small">Scroll ↓</div>
   </div>
 </section>
 
 <!-- DATE -->
-<section>
-  <div class="card" data-aos="fade-up">
-    <h3>Tarikh Majlis</h3>
-    <div class="divider"></div>
-    <div class="date">30 · 05 · 2026</div>
-    <p class="small">Sabtu</p>
-  </div>
-</section>
-
-<!-- AYAT -->
-<section>
-  <div class="card" data-aos="fade-up">
-    <p>
-      “Dan Kami menciptakan kamu berpasang-pasangan”
-    </p>
-    <div class="divider"></div>
-    <p class="small">(Surah An-Naba’: 8)</p>
-  </div>
-</section>
-
-<!-- INVITE -->
-<section>
-  <div class="card" data-aos="fade-up">
-    <h3>Dengan penuh kesyukuran</h3>
-    <div class="divider"></div>
-    <p class="small">
-      Kami menjemput tuan/puan ke majlis pertunangan kami
-    </p>
-  </div>
-</section>
+<section><div class="card" data-aos="fade-up">
+    <h3>Tarikh Majlis</h3><div class="divider"></div>
+    <div class="names">30 · 05 · 2026</div><p class="small">Sabtu</p>
+  </div></section>
 
 <!-- MUSIC -->
 <audio id="bgm" loop>
   <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3" type="audio/mpeg">
 </audio>
-
-<section>
-  <div class="card" data-aos="fade-up">
+<section><div class="card" data-aos="fade-up">
     <h3>🎵 Lagu Latar</h3>
-    <button onclick="toggleMusic()">Play / Pause Music</button>
-  </div>
-</section>
+    <button onclick="toggleMusic()">Play / Pause</button>
+  </div></section>
 
 </main>
 
@@ -262,54 +185,46 @@ button:hover {
 <script>
 AOS.init({ duration: 1000, once: true });
 
-// MUSIC
-const bgm = document.getElementById('bgm');
-bgm.volume = 0.2;
-
-// DOOR OPENING
+// Door
 window.addEventListener('load', () => {
-  const leftDoor = document.querySelector('.door.left');
-  const rightDoor = document.querySelector('.door.right');
-  const mainContent = document.getElementById('mainContent');
-
+  const left = document.querySelector('.door.left');
+  const right = document.querySelector('.door.right');
+  const main = document.getElementById('mainContent');
   setTimeout(() => {
-    leftDoor.style.transform = 'translateX(-100%)';
-    rightDoor.style.transform = 'translateX(100%)';
-  }, 500);
-
+    left.style.transform = 'translateX(-100%)';
+    right.style.transform = 'translateX(100%)';
+  }, 600);
   setTimeout(() => {
-    document.getElementById('doorOverlay').style.display = 'none';
-    mainContent.style.opacity = 1;
-    bgm.play().catch(()=>console.log("Autoplay blocked"));
-  }, 2500);
+    document.getElementById('doorOverlay').remove();
+    main.style.opacity = 1;
+    document.getElementById('bgm').play().catch(()=>{});
+  }, 2600);
 });
 
-function toggleMusic() {
-  if (bgm.paused) bgm.play();
-  else bgm.pause();
+// Music toggle
+function toggleMusic(){
+  const bgm = document.getElementById('bgm');
+  bgm.paused ? bgm.play() : bgm.pause();
 }
 
-// PETALS
-const petalsContainer = document.getElementById('petals');
-for(let i=0;i<30;i++){
-  const petal = document.createElement('div');
-  petal.classList.add('petal');
-  petal.style.left = Math.random()*100 + 'vw';
-  petal.style.animationDuration = (5 + Math.random()*10) + 's';
-  petal.style.animationDelay = Math.random()*5 + 's';
-  petal.style.transform = `rotate(${Math.random()*360}deg) scale(${0.5+Math.random()*0.8})`;
-  petalsContainer.appendChild(petal);
+// Petals
+for(let i=0;i<25;i++){
+  const p = document.createElement('div');
+  p.classList.add('petal');
+  p.style.left = Math.random()*100 + 'vw';
+  p.style.animationDuration = (6 + Math.random()*8) + 's';
+  p.style.animationDelay = Math.random()*5 + 's';
+  document.getElementById('petals').appendChild(p);
 }
 
-// BIRDS
-const birdsContainer = document.getElementById('birds');
-for(let i=0;i<5;i++){
-  const bird = document.createElement('div');
-  bird.classList.add('bird');
-  bird.style.top = (10 + Math.random()*70) + 'vh';
-  bird.style.animationDuration = (15 + Math.random()*10) + 's';
-  bird.style.animationDelay = Math.random()*5 + 's';
-  birdsContainer.appendChild(bird);
+// Birds
+for(let i=0;i<4;i++){
+  const b = document.createElement('div');
+  b.classList.add('bird');
+  b.style.top = (10 + Math.random()*60) + 'vh';
+  b.style.animationDuration = (10 + Math.random()*8) + 's';
+  b.style.animationDelay = Math.random()*3 + 's';
+  document.getElementById('birds').appendChild(b);
 }
 </script>
 
