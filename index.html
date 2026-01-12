@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alya & Aqil - Pertunangan</title>
+<title>Aqil & Alya - Pertunangan</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -29,14 +29,15 @@ body {
   position: fixed;
   top: 0; left: 0;
   width: 100vw; height: 100vh;
-  background: linear-gradient(to bottom, #f5e0d6, #ffd6aa);
+  background: #fffaf0;
   display: flex;
   z-index: 999;
+  overflow: hidden;
 }
 
 .door {
   width: 50%; height: 100%;
-  background: linear-gradient(to bottom, #f5c6b5, #f4a693);
+  background: url('https://i.ibb.co/F5sqGQ6/wood-door.png') no-repeat center/cover; /* real wooden door image */
   transform-origin: left;
   transition: transform 2s ease;
 }
@@ -46,7 +47,7 @@ body {
 }
 
 /* INVISIBLE UNTIL DOOR OPENS */
-mainContent {
+#mainContent {
   opacity: 0;
   transition: opacity 1s ease 2s;
 }
@@ -137,11 +138,11 @@ button:hover {
   background: #b76e31;
 }
 
-/* Floating petals */
+/* FLOATING PETALS */
 .petal {
   position: fixed;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   background: url('https://i.ibb.co/4pVh3m0/petal.png') no-repeat center/contain;
   pointer-events: none;
   top: -50px;
@@ -162,6 +163,26 @@ button:hover {
     opacity: 0.5;
   }
 }
+
+/* FLYING BIRDS */
+.bird {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  background: url('https://i.ibb.co/Brx8kT9/white-bird.png') no-repeat center/contain;
+  pointer-events: none;
+  z-index: 1;
+  top: 20%;
+  animation: fly linear infinite;
+}
+
+@keyframes fly {
+  0% { transform: translateX(-50px) translateY(0) rotate(0deg);}
+  25% { transform: translateX(25vw) translateY(-20px) rotate(10deg);}
+  50% { transform: translateX(50vw) translateY(10px) rotate(-10deg);}
+  75% { transform: translateX(75vw) translateY(-10px) rotate(5deg);}
+  100% { transform: translateX(110vw) translateY(0) rotate(0deg);}
+}
 </style>
 </head>
 
@@ -173,8 +194,11 @@ button:hover {
   <div class="door right"></div>
 </div>
 
-<!-- Floating petals container -->
+<!-- FLOATING PETALS -->
 <div id="petals"></div>
+
+<!-- FLYING BIRDS -->
+<div id="birds"></div>
 
 <main id="mainContent">
 
@@ -238,11 +262,11 @@ button:hover {
 <script>
 AOS.init({ duration: 1000, once: true });
 
-// Music
+// MUSIC
 const bgm = document.getElementById('bgm');
 bgm.volume = 0.2;
 
-// Door animation
+// DOOR OPENING
 window.addEventListener('load', () => {
   const leftDoor = document.querySelector('.door.left');
   const rightDoor = document.querySelector('.door.right');
@@ -251,14 +275,13 @@ window.addEventListener('load', () => {
   setTimeout(() => {
     leftDoor.style.transform = 'translateX(-100%)';
     rightDoor.style.transform = 'translateX(100%)';
-  }, 500); // delay before doors start
+  }, 500);
 
-  // After doors open
   setTimeout(() => {
     document.getElementById('doorOverlay').style.display = 'none';
     mainContent.style.opacity = 1;
     bgm.play().catch(()=>console.log("Autoplay blocked"));
-  }, 2500); // match the transition
+  }, 2500);
 });
 
 function toggleMusic() {
@@ -266,11 +289,9 @@ function toggleMusic() {
   else bgm.pause();
 }
 
-// Floating petals
+// PETALS
 const petalsContainer = document.getElementById('petals');
-const numPetals = 30;
-
-for(let i=0;i<numPetals;i++){
+for(let i=0;i<30;i++){
   const petal = document.createElement('div');
   petal.classList.add('petal');
   petal.style.left = Math.random()*100 + 'vw';
@@ -278,6 +299,17 @@ for(let i=0;i<numPetals;i++){
   petal.style.animationDelay = Math.random()*5 + 's';
   petal.style.transform = `rotate(${Math.random()*360}deg) scale(${0.5+Math.random()*0.8})`;
   petalsContainer.appendChild(petal);
+}
+
+// BIRDS
+const birdsContainer = document.getElementById('birds');
+for(let i=0;i<5;i++){
+  const bird = document.createElement('div');
+  bird.classList.add('bird');
+  bird.style.top = (10 + Math.random()*70) + 'vh';
+  bird.style.animationDuration = (15 + Math.random()*10) + 's';
+  bird.style.animationDelay = Math.random()*5 + 's';
+  birdsContainer.appendChild(bird);
 }
 </script>
 
