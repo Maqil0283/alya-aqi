@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alya & Aqil</title>
+<title>Alya & Aqil - Pertunangan</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
 body {
   margin: 0;
   font-family: 'Playfair Display', serif;
-  background: linear-gradient(#fffaf6, #ffffff);
+  background: linear-gradient(to bottom right, #fff0f5, #ffeeda, #f0fff0);
   color: #3b3b3b;
   scroll-behavior: smooth;
 }
@@ -31,37 +31,49 @@ section {
 }
 
 .card {
-  background: #ffffff;
+  background: #ffffffcc; /* semi-transparent for colorful bg peek */
   width: 100%;
   max-width: 380px;
   padding: 50px 30px;
   border-radius: 28px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.08);
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.12);
 }
 
 .names {
   font-family: 'Great Vibes', cursive;
-  font-size: 52px;
+  font-size: 60px;
   margin-bottom: 10px;
+  color: #e07b91;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.1);
 }
 
 .subtitle {
   letter-spacing: 2px;
   font-size: 14px;
+  color: #b76e31;
 }
 
 .divider {
   width: 60px;
-  height: 1px;
-  background: #c7a46a;
+  height: 2px;
+  background: linear-gradient(to right, #fbb1b1, #c7a46a, #b1fbd6);
   margin: 20px auto;
+  border-radius: 2px;
 }
 
 .date {
-  font-size: 18px;
+  font-size: 22px;
   letter-spacing: 3px;
-  margin-top: 15px;
+  font-weight: 600;
+  color: #b76e31;
 }
 
 .small {
@@ -83,6 +95,12 @@ button {
   background: #c7a46a;
   color: #fff;
   font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #b76e31;
 }
 </style>
 </head>
@@ -92,7 +110,7 @@ button {
 <!-- COVER -->
 <section>
   <div class="card" data-aos="fade-up">
-    <div class="subtitle">MAJLIS PERTUNANGAN</div>
+    <div class="subtitle">PERTUNANGAN</div>
     <div class="divider"></div>
     <div class="names">Alya & Aqil</div>
     <div class="scroll">Scroll ↓</div>
@@ -139,13 +157,27 @@ button {
 <section>
   <div class="card" data-aos="fade-up">
     <h3>🎵 Lagu Latar</h3>
-    <button onclick="document.getElementById('bgm').play()">Play Music</button>
+    <button onclick="toggleMusic()">Play / Pause Music</button>
   </div>
 </section>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 AOS.init({ duration: 1000, once: true });
+
+const bgm = document.getElementById('bgm');
+bgm.volume = 0.2; // soft music
+bgm.play().catch(() => {
+  console.log("Autoplay blocked, user interaction required.");
+});
+
+function toggleMusic() {
+  if (bgm.paused) {
+    bgm.play();
+  } else {
+    bgm.pause();
+  }
+}
 </script>
 
 </body>
