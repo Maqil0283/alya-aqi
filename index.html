@@ -1,77 +1,151 @@
 <!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alya & Aqil</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alya & Aqil</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Playfair Display', serif;
-      background: #ffffff;
-      color: #333;
-      scroll-behavior: smooth;
-    }
-    section {
-      height: 100vh;
-      padding: 40px 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-    h1 { font-size: 42px; }
-    h2 { font-size: 26px; }
-    p  { font-size: 18px; max-width: 320px; }
-    .date { letter-spacing: 3px; margin-top: 15px; }
-    .hint {
-      position: absolute;
-      bottom: 20px;
-      font-size: 14px;
-      opacity: 0.6;
-    }
-  </style>
+<!-- AOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(#fffaf6, #ffffff);
+  color: #3b3b3b;
+  scroll-behavior: smooth;
+}
+
+section {
+  min-height: 100vh;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 380px;
+  padding: 50px 30px;
+  border-radius: 28px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+.names {
+  font-family: 'Great Vibes', cursive;
+  font-size: 52px;
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+.divider {
+  width: 60px;
+  height: 1px;
+  background: #c7a46a;
+  margin: 20px auto;
+}
+
+.date {
+  font-size: 18px;
+  letter-spacing: 3px;
+  margin-top: 15px;
+}
+
+.small {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.scroll {
+  margin-top: 25px;
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 24px;
+  border-radius: 20px;
+  border: none;
+  background: #c7a46a;
+  color: #fff;
+  font-size: 14px;
+}
+</style>
 </head>
 
 <body>
 
+<!-- COVER -->
 <section>
-  <h1 data-aos="fade-up">Alya & Aqil</h1>
-  <p data-aos="fade-up" data-aos-delay="200">Ijab & Qabul</p>
-  <div class="hint">Scroll ↓</div>
+  <div class="card" data-aos="fade-up">
+    <div class="subtitle">MAJLIS PERTUNANGAN</div>
+    <div class="divider"></div>
+    <div class="names">Alya & Aqil</div>
+    <div class="scroll">Scroll ↓</div>
+  </div>
 </section>
 
+<!-- DATE -->
 <section>
-  <h2 data-aos="fade-up">Tarikh Majlis</h2>
-  <p class="date" data-aos="fade-up" data-aos-delay="200">
-    13 · 03 · 2027
-  </p>
+  <div class="card" data-aos="fade-up">
+    <h3>Tarikh Majlis</h3>
+    <div class="divider"></div>
+    <div class="date">30 · 05 · 2026</div>
+    <p class="small">Sabtu</p>
+  </div>
 </section>
 
+<!-- AYAT -->
 <section>
-  <p data-aos="fade-up">
-    “Dan Kami menciptakan kamu berpasang-pasangan”
-  </p>
-  <small data-aos="fade-up" data-aos-delay="200">
-    (Surah An-Naba’: 8)
-  </small>
+  <div class="card" data-aos="fade-up">
+    <p>
+      “Dan Kami menciptakan kamu berpasang-pasangan”
+    </p>
+    <div class="divider"></div>
+    <p class="small">(Surah An-Naba’: 8)</p>
+  </div>
 </section>
 
+<!-- INVITE -->
 <section>
-  <h2 data-aos="fade-up">Dengan penuh kesyukuran</h2>
-  <p data-aos="fade-up" data-aos-delay="200">
-    Kami menjemput tuan/puan ke majlis pernikahan kami
-  </p>
+  <div class="card" data-aos="fade-up">
+    <h3>Dengan penuh kesyukuran</h3>
+    <div class="divider"></div>
+    <p class="small">
+      Kami menjemput tuan/puan ke majlis pertunangan kami
+    </p>
+  </div>
+</section>
+
+<!-- MUSIC -->
+<audio id="bgm" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-tenderness.mp3" type="audio/mpeg">
+</audio>
+
+<section>
+  <div class="card" data-aos="fade-up">
+    <h3>🎵 Lagu Latar</h3>
+    <button onclick="document.getElementById('bgm').play()">Play Music</button>
+  </div>
 </section>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init({ duration: 1000, once: true });
+AOS.init({ duration: 1000, once: true });
 </script>
 
 </body>
