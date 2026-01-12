@@ -20,18 +20,50 @@ body {
   background: linear-gradient(to bottom right, #fff0f5, #ffeeda, #f0fff0);
   color: #3b3b3b;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  position: relative;
 }
 
+/* DOOR ANIMATION */
+#doorOverlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: linear-gradient(to bottom, #f5e0d6, #ffd6aa);
+  display: flex;
+  z-index: 999;
+}
+
+.door {
+  width: 50%; height: 100%;
+  background: linear-gradient(to bottom, #f5c6b5, #f4a693);
+  transform-origin: left;
+  transition: transform 2s ease;
+}
+
+.door.right {
+  transform-origin: right;
+}
+
+/* INVISIBLE UNTIL DOOR OPENS */
+mainContent {
+  opacity: 0;
+  transition: opacity 1s ease 2s;
+}
+
+/* SECTIONS & CARDS */
 section {
   min-height: 100vh;
   padding: 60px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 2;
 }
 
 .card {
-  background: #ffffffcc; /* semi-transparent for colorful bg peek */
+  background: #ffffffcc; 
   width: 100%;
   max-width: 380px;
   padding: 50px 30px;
@@ -40,6 +72,8 @@ section {
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   backdrop-filter: blur(5px);
+  position: relative;
+  z-index: 2;
 }
 
 .card:hover {
@@ -102,10 +136,47 @@ button {
 button:hover {
   background: #b76e31;
 }
+
+/* Floating petals */
+.petal {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  background: url('https://i.ibb.co/4pVh3m0/petal.png') no-repeat center/contain;
+  pointer-events: none;
+  top: -50px;
+  opacity: 0.8;
+  z-index: 1;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0.5;
+  }
+}
 </style>
 </head>
 
 <body>
+
+<!-- DOOR OVERLAY -->
+<div id="doorOverlay">
+  <div class="door left"></div>
+  <div class="door right"></div>
+</div>
+
+<!-- Floating petals container -->
+<div id="petals"></div>
+
+<main id="mainContent">
 
 <!-- COVER -->
 <section>
@@ -161,22 +232,52 @@ button:hover {
   </div>
 </section>
 
+</main>
+
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 AOS.init({ duration: 1000, once: true });
 
+// Music
 const bgm = document.getElementById('bgm');
-bgm.volume = 0.2; // soft music
-bgm.play().catch(() => {
-  console.log("Autoplay blocked, user interaction required.");
+bgm.volume = 0.2;
+
+// Door animation
+window.addEventListener('load', () => {
+  const leftDoor = document.querySelector('.door.left');
+  const rightDoor = document.querySelector('.door.right');
+  const mainContent = document.getElementById('mainContent');
+
+  setTimeout(() => {
+    leftDoor.style.transform = 'translateX(-100%)';
+    rightDoor.style.transform = 'translateX(100%)';
+  }, 500); // delay before doors start
+
+  // After doors open
+  setTimeout(() => {
+    document.getElementById('doorOverlay').style.display = 'none';
+    mainContent.style.opacity = 1;
+    bgm.play().catch(()=>console.log("Autoplay blocked"));
+  }, 2500); // match the transition
 });
 
 function toggleMusic() {
-  if (bgm.paused) {
-    bgm.play();
-  } else {
-    bgm.pause();
-  }
+  if (bgm.paused) bgm.play();
+  else bgm.pause();
+}
+
+// Floating petals
+const petalsContainer = document.getElementById('petals');
+const numPetals = 30;
+
+for(let i=0;i<numPetals;i++){
+  const petal = document.createElement('div');
+  petal.classList.add('petal');
+  petal.style.left = Math.random()*100 + 'vw';
+  petal.style.animationDuration = (5 + Math.random()*10) + 's';
+  petal.style.animationDelay = Math.random()*5 + 's';
+  petal.style.transform = `rotate(${Math.random()*360}deg) scale(${0.5+Math.random()*0.8})`;
+  petalsContainer.appendChild(petal);
 }
 </script>
 
