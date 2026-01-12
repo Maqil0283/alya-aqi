@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alya & Aqil</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background: #ffffff;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+    section {
+      height: 100vh;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    h1 { font-size: 42px; }
+    h2 { font-size: 26px; }
+    p  { font-size: 18px; max-width: 320px; }
+    .date { letter-spacing: 3px; margin-top: 15px; }
+    .hint {
+      position: absolute;
+      bottom: 20px;
+      font-size: 14px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+
+<body>
+
+<section>
+  <h1 data-aos="fade-up">Alya & Aqil</h1>
+  <p data-aos="fade-up" data-aos-delay="200">Ijab & Qabul</p>
+  <div class="hint">Scroll ↓</div>
+</section>
+
+<section>
+  <h2 data-aos="fade-up">Tarikh Majlis</h2>
+  <p class="date" data-aos="fade-up" data-aos-delay="200">
+    13 · 03 · 2027
+  </p>
+</section>
+
+<section>
+  <p data-aos="fade-up">
+    “Dan Kami menciptakan kamu berpasang-pasangan”
+  </p>
+  <small data-aos="fade-up" data-aos-delay="200">
+    (Surah An-Naba’: 8)
+  </small>
+</section>
+
+<section>
+  <h2 data-aos="fade-up">Dengan penuh kesyukuran</h2>
+  <p data-aos="fade-up" data-aos-delay="200">
+    Kami menjemput tuan/puan ke majlis pernikahan kami
+  </p>
+</section>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+</script>
+
+</body>
+</html>
